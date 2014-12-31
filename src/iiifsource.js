@@ -77,16 +77,20 @@ klokantech.IiifSource = function(options) {
       if (x < 0 || sizes[0] <= x || y < 0 || sizes[1] <= y) {
         return undefined;
       } else {
-        var scale = Math.pow(2, maxZoom - z);
-        var tileBaseSize = tileSize * scale;
-        var minx = x * tileBaseSize;
-        var miny = y * tileBaseSize;
-        var maxx = Math.min(minx + tileBaseSize, width);
-        var maxy = Math.min(miny + tileBaseSize, height);
+        //var scale = Math.pow(2, maxZoom - z);
+        //var tileBaseSize = tileSize * scale;
+        //var minx = x * tileBaseSize;
+        //var miny = y * tileBaseSize;
+        //var maxx = Math.min(minx + tileBaseSize, width);
+        //var maxy = Math.min(miny + tileBaseSize, height);
 
-        var query = '/' + minx + ',' + miny + ',' +
-            (maxx - minx) + ',' + (maxy - miny) +
-            '/pct:' + (100 / scale) + '/0/' + quality + '.' + extension;
+        //var query = '/' + minx + ',' + miny + ',' +
+        //    (maxx - minx) + ',' + (maxy - miny) +
+        //    '/pct:' + (100 / scale) + '/0/' + quality + '.' + extension;
+
+        // gdal://file/z/x/y/png
+        var query = '/' + tileCoord[0] + '/' + tileCoord[1] + '/' + (-tileCoord[2] - 1) +
+            '/' + extension;
 
         return baseUrl + query;
       }
