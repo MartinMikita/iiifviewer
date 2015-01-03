@@ -8,13 +8,13 @@
 <style type="text/css">
 html, body { margin:0; padding: 0; height: 100%; width: 100%; }
 body { width:100%; height:100%; background: #ffffff; }
-#map { position: absolute; height: 80%; width: 100%; background-color: #FFFFFF; border: 1px black solid;}
+#map { position: absolute; height: 90%; width: 100%; background-color: #FFFFFF; border: 1px black solid;}
 .olImageLoadError {  display: none !important; }
 label { text-align: center; display: block; max-width: 100%; margin: 6px 0 4px 1px; font-weight: bold; font-size: 12.6px; color: #393939; }
 input, select, button { vertical-align: top; }
 input[type="range"] { display: block; width: 100%; }
 .range { float: left; width: 150px; }
-#table { border-spacing: 20px; }
+#controls { height: 10%; }
 table tr td { padding-left: 40px; padding-right: 40px; }
 </style>
 <script type="text/javascript">
@@ -77,6 +77,7 @@ include('build/ol-iiifviewer.js');
 <div id="no-webgl" style="background:red;width:600px;">
       This example requires a browser that supports <a href="http://get.webgl.org/">WebGL</a>.
 </div>
+<div id="controls"
 <form>
   <table width="100%">
   <tr>
@@ -87,6 +88,7 @@ include('build/ol-iiifviewer.js');
   </tr>
   </table>
 </form>
+</div>
 <div id="map">
 </div>
 </body>
