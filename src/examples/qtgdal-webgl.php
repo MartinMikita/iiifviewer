@@ -8,7 +8,7 @@
 <style type="text/css">
 html, body { margin:0; padding: 0; height: 100%; width: 100%; }
 body { width:100%; height:100%; background: #ffffff; }
-#map { position: absolute; height: 90%; width: 100%; background-color: #FFFFFF; border: 1px black solid;}
+#map { position: absolute; height: 90%; width: 100%; background-color: #FFFFFF; }
 .olImageLoadError {  display: none !important; }
 label { text-align: center; display: block; max-width: 100%; margin: 6px 0 4px 1px; font-weight: bold; font-size: 12.6px; color: #393939; }
 input, select, button { vertical-align: top; }
@@ -75,9 +75,9 @@ include('build/ol-iiifviewer.js');
 </head>
 <body>
 <div id="no-webgl" style="background:red;width:600px;">
-      This example requires a browser that supports <a href="http://get.webgl.org/">WebGL</a>.
+      This viewer requires a browser that supports <a href="http://get.webgl.org/">WebGL</a>.
 </div>
-<div id="controls"
+<div id="controls">
 <form>
   <table width="100%">
   <tr>
