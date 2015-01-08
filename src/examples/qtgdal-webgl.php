@@ -8,7 +8,8 @@
 <style type="text/css">
 html, body { margin:0; padding: 0; height: 100%; width: 100%; }
 body { width:100%; height:100%; background: #ffffff; }
-#map { position: absolute; height: 90%; width: 100%; background-color: #FFFFFF; }
+#mapWebGl { position: absolute; height: 90%; width: 100%; background-color: #FFFFFF; }
+#map { position: absolute; height: 100%; width: 100%; background-color: #FFFFFF; }
 .olImageLoadError {  display: none !important; }
 label { text-align: center; display: block; max-width: 100%; margin: 6px 0 4px 1px; font-weight: bold; font-size: 12.6px; color: #393939; }
 input, select, button { vertical-align: top; }
@@ -23,8 +24,12 @@ include('build/ol3.js');
 include('build/ol-iiifviewer.js');
 ?>
 
-  function loadGdalFile(size, zoom, fname)
+  var viewer;
+
+  function loadGdalFile(size, zoom, fname, useWebGL)
   {
+    useWebGL = (typeof useWebGL === 'undefined') ? true : useWebGL;
+    
     var zmin = zoom[0];
     var zmax = zoom[1];
     var factors = [];
@@ -65,9 +70,21 @@ include('build/ol-iiifviewer.js');
       };
     };
 
-    if (ol.has.WEBGL) {
+    if (ol.has.WEBGL && useWebGL) {
       document.getElementById('no-webgl').style.display = 'none';
-      new IiifViewer('map', data, init, true);
+      document.getElementById('controls').style.display = 'block';
+      document.getElementById('map').style.display = 'none';
+      document.getElementById('mapWebGl').style.display = 'block';
+
+      viewer = new IiifViewer('mapWebGl', data, init, true);
+    }
+    else {
+      document.getElementById('no-webgl').style.display = 'none';
+      document.getElementById('controls').style.display = 'none';
+      document.getElementById('map').style.display = 'block';
+      document.getElementById('mapWebGl').style.display = 'none';
+
+      viewer = new IiifViewer('map', data);
     }
   }
 
@@ -88,6 +105,8 @@ include('build/ol-iiifviewer.js');
   </tr>
   </table>
 </form>
+</div>
+<div id="mapWebGl">
 </div>
 <div id="map">
 </div>
